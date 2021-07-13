@@ -9,7 +9,7 @@
   display: flex;
 }
 
-.nav__list_li {
+.nav__list li {
   background-color: #34ebab;
   border-radius: 6px;
   cursor: pointer;
