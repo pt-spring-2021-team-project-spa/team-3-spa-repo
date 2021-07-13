@@ -1,0 +1,37 @@
+.actionButton {
+  background-color: #34cceb;
+  border-radius: 6px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.nav__list {
+  display: flex;
+}
+
+.nav__list_li {
+  background-color: #34ebab;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 20px;
+  list-style-type: none;
+}
+
+.cards__container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card__title {
+  cursor: pointer;
+}
+
+.card__container {
+  background-color: #8334eb;
+  border-radius: 8px;
+  height: 420px;
+  padding: 5px;
+  text-align: center;
+}
