@@ -9,7 +9,6 @@ function buildPage() {
     header();
     renderNasaCardList();
     // renderNasaCardInfo();
-    renderNasaImages();
 }
 
 function header() {
