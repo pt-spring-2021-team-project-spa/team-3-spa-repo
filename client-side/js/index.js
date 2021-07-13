@@ -1,14 +1,14 @@
 import Header from './components/Header.js';
 import apiActions from './api-actions/api-actions.js';
 import CardsPage from './pages/CardsPage.js';
-// import CardPage from './pages/CardPage.js';
+import CardPage from './pages/CardPage.js';
 
 buildPage();
 
 function buildPage() {
     header();
     renderNasaCardList();
-    // renderNasaCardInfo();
+    renderNasaCard();
 }
 
 function header() {
@@ -21,7 +21,6 @@ function renderNasaCardList() {
     nasaCardsButton.addEventListener('click', () => {
       const app = document.querySelector('#app');
       apiActions.getRequest(
-        // 'https://images-api.nasa.gov/search?q=location',
         'https://images-api.nasa.gov/search?keywords=mars',
         (cards) => {
           app.innerHTML = CardsPage(cards);
@@ -30,7 +29,7 @@ function renderNasaCardList() {
     });
   }
 
-function renderNasaCardInfo() {
+function renderNasaCard() {
     const app = document.querySelector('$app');
     app.addEventListener('click', (event) => {
         if (event.target.classList.contains('card__title')) {
