@@ -1,22 +1,22 @@
-// import Card from './Card';
-
 export default function Cards(cards) {
     console.log(cards);
-    const cards = cards.collection.items;
-    console.log(cards);
+    const items = cards.collection.items;
+    console.log(items);
+  
     return `
-        <div class='cards__container'>
-            ${cards
-                .map((card) => {
-                    console.log(card.data)
-                    const card.title = item.data[0].title;
-                    const card.title = item.links[0].title;
-                    const card.title = item.data[0].title;
-                    return `
-                        ${Card(card)}
-                    `;
-                })
-                .join('')}
-        </div>
-    `;
-}
+      ${items
+        .map((item) => {
+          console.log(item.links);
+          const cardTitle = item.data[0].title;
+          const cardImage = item.links[0].href;
+          const cardShortDescription = item.data[0].description_508;
+          const cardLongDescription = item.data[0].description;
+          return `
+            <h2>${cardTitle}</h2>
+            <img src=${cardImage} alt='' />
+            <p>${cardLongDescription}</p>
+            `;
+        })
+        .join('')}
+      `;
+  }
