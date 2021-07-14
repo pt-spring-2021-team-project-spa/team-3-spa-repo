@@ -1,4 +1,4 @@
-// console.log('Client Side is wired up!');
+console.log('Client Side is wired up!');
 import Header from "./components/Header.js";
 // import Footer from "/components/Footer.js";
 import HomePage from "./pages/HomePage.js";

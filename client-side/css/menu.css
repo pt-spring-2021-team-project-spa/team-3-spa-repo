@@ -1,4 +1,4 @@
-.menuToggle
+/* .menuToggle
 {
   display: block;
   position: relative;
@@ -118,5 +118,5 @@
 .menuToggle input:checked ~ ul
 {
   transform: none;
-}
+} */
 
