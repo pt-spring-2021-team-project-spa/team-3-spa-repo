@@ -30,14 +30,14 @@ function renderNasaCardList() {
   }
 
 function renderNasaCard() {
-    const app = document.querySelector('$app');
-    app.addEventListener('click', (event) => {
-        if (event.target.classList.contains('card__title')) {
-            const cardUrl =
-                event.target.parentElement.querySelector('#cardId').value;
-            apiActions.getRequest(cardUrl, (card) => {
-                app.innerHTML = CardPage(card);
-            });
+    const nasaCardButton = document.querySelector('.nav__list_card');
+    nasaCardButton.addEventListener('click', (event) => {
+      const app = document.querySelector('#app');
+      apiActions.getRequest(
+        'https://images-api.nasa.gov/search?keywords=mars',
+        (cards) => {
+          app.innerHTML = CardPage(cards);
         }
+      );
     });
 }

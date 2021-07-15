@@ -1,25 +1,28 @@
-import Card from './Card';
+// import Card from './Card';
 
 export default function Cards(cards) {
     // console.log(cards);
-    const items = cards.collection.items;
+    // const items = cards.collection.items;
     // console.log(items);
   
     return `
+    <div class='cards__container'>
       ${cards.collection.items
         .map((card) => {
-        //   console.log(item.data);
-        //   const cardTitle = item.data[0].title;
-        //   const cardImage = item.links[0].href;
-        //   const cardShortDescription = item.data[0].description_508;
-        //   const cardLongDescription = item.data[0].description;
-        //   <h2>${cardTitle}</h2>
-        //     <img src=${cardImage} alt='' />
-        //     <p>${cardLongDescription}</p>
+          const cardTitle = card.data[0].title;
+          const cardImage = card.links[0].href;
+          const cardShortDescription = card.data[0].description_508;
+          const cardLongDescription = card.data[0].description;
           return `
-            ${Card(card)}
+          <div class='card__container'>
+            <input type='hidden' id='cardId' value=${card.data[0].nasa_id} />
+            <h2 class='card__title'>${cardTitle}</h2>
+            <div class='card__img'><img src=${cardImage} alt='' /></div>
+            <p class='card__desc'>${cardLongDescription}</p>
+            </div>
             `;
         })
         .join('')}
+        </div>
       `;
   }
