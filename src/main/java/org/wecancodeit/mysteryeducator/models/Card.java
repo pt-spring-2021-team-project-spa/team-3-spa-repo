@@ -1,12 +1,7 @@
 package org.wecancodeit.mysteryeducator.models;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -55,6 +50,14 @@ public class Card {
 
     public String getFacts() {
         return facts;
+    }
+
+    public Boolean getIsCollected() {
+        return isCollected;
+    }
+
+    public void isCollected(Boolean bool) {
+        isCollected = true;
     }
 
     @Override

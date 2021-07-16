@@ -53,6 +53,11 @@ public class Badge {
     public Boolean isComplete() {
         return isComplete;
     }
+
+    public void isCompete(Boolean bool) {
+        isComplete = bool;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
