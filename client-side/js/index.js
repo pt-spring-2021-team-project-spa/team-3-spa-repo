@@ -1,1 +1,6 @@
-console.log('Client Side is wired up!');
+
+const card = document.querySelector(".card__inner");
+
+card.addEventListener("click", function (e) {
+  card.classList.toggle('is-flipped');
+});
