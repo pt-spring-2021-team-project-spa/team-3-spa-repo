@@ -3,6 +3,7 @@ package org.wecancodeit.mysteryeducator.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
@@ -13,17 +14,20 @@ public class Card {
     @GeneratedValue
     private Long id;
     private String name;
-    private String card;
+    @ManyToOne
+    private Badge badge;
     private String image;
-    private ArrayList<String> facts = new Collection;
+    private Boolean isCollected;
+    private Collection<String> facts = new ArrayList<>();
 
     protected Card() {
     }
 
-    public Card(String name, String card, String image, String... facts) {
+    public Card(String name, Badge badge, String image, String... facts) {
         this.name = name;
-        this.card = card;
+        this.badge = badge;
         this.image = image;
+        isCollected = false;
         for (String fact : facts) {
             this.facts.add(fact);
         }
@@ -37,15 +41,15 @@ public class Card {
         return name;
     }
 
-    public String getCard() {
-        return card;
+    public Badge getBadge() {
+        return badge;
     }
 
     public String getImage() {
         return image;
     }
 
-    public ArrayList<String> getFacts() {
+    public Collection<String> getFacts() {
         return facts;
     }
 

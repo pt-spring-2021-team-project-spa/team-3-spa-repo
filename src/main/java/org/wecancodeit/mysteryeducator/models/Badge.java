@@ -1,8 +1,12 @@
 package org.wecancodeit.mysteryeducator.models;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -11,16 +15,18 @@ public class Badge {
     @GeneratedValue
     private Long id;
     private String name;
-    private String card;
+    @OneToMany(mappedBy = "badge")
+    private Collection<Card> cards;
     private String image;
+    private Boolean isComplete;
 
     protected Badge() {
     }
 
-    public Badge(String name, String card, String image) {
+    public Badge(String name, String image) {
         this.name = name;
-        this.card = card;
         this.image = image;
+        isComplete = false;
     }
 
     public Long getId() {
@@ -31,14 +37,17 @@ public class Badge {
         return name;
     }
 
-    public String getCard() {
-        return card;
+    public Collection<Card> getCards() {
+        return cards;
     }
 
     public String getImage() {
         return image;
     }
 
+    public Boolean isComplete() {
+        return isComplete;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
