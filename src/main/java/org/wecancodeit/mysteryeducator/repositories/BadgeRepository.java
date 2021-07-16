@@ -10,6 +10,6 @@ import java.util.Optional;
 @Repository
 public interface BadgeRepository extends CrudRepository<Badge, Long> {
 //    Optional<Badge> findById(@Param("id") Long id);
-    Optional<Badge> findById(Long id);
+//    Optional<Badge> findById(Long id);
 
 }

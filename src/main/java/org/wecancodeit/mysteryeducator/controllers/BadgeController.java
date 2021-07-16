@@ -12,7 +12,6 @@ import javax.annotation.Resource;
 import java.util.Collection;
 
 @RestController
-@CrossOrigin
 public class BadgeController {
    @Resource
    private BadgeRepository badgeRepository;
@@ -23,7 +22,7 @@ public class BadgeController {
    }
 
    @GetMapping("/api/badges/{badgeId}")
-   public Badge getBadgeById(@PathVariable long badgeId) {
+   public Badge getBadge(@PathVariable Long badgeId) {
       return badgeRepository.findById(badgeId).get();
    }
 
