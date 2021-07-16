@@ -23,9 +23,13 @@ public class Populator implements CommandLineRunner {
         Badge historian = new Badge("Historian", "historian.jpg");
         Badge curator = new Badge("Curator", "curator.jpg");
 
-        cardRepository.save(new Card("Mars", astronaut, "mars.jpg", "fact 1", "fact2"));
-        cardRepository.save(new Card("Venus", astronaut, "venus.jpg", "fact 1", "fact2"));
-        cardRepository.save(new Card("Mona Lisa", curator, "monalisa.jpg", "fact 1", "fact2"));
+        badgeRepository.save(astronaut);
+        badgeRepository.save(historian);
+        badgeRepository.save(curator);
+
+        cardRepository.save(new Card("Mars", astronaut, "mars.jpg", "api info to fetch"));
+        cardRepository.save(new Card("Venus", astronaut, "venus.jpg", "api infor to fetch"));
+        cardRepository.save(new Card("Mona Lisa", curator, "monalisa.jpg", "api info to fetch"));
 
 
 

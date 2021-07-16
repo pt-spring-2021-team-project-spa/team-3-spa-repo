@@ -1,6 +1,8 @@
 package org.wecancodeit.mysteryeducator.models;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,8 +17,11 @@ public class Badge {
     @GeneratedValue
     private Long id;
     private String name;
+
     @OneToMany(mappedBy = "badge")
+    @JsonIgnore
     private Collection<Card> cards;
+
     private String image;
     private Boolean isComplete;
 
