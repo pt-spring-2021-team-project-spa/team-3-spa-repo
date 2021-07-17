@@ -56,7 +56,7 @@ public class Card {
         return isCollected;
     }
 
-    public void isCollected(Boolean bool) {
+    public void setIsCollected(Boolean bool) {
         isCollected = true;
     }
 

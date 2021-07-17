@@ -9,5 +9,5 @@ import java.util.Collection;
 
 @Repository
 public interface CardRepository extends CrudRepository<Card, Long> {
-    public Collection<Card> findByBadge(Badge badge);
+    Collection<Card> findByBadge(Badge badge);
 }
