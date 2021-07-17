@@ -54,7 +54,7 @@ public class Badge {
         return isComplete;
     }
 
-    public void isCompete(Boolean bool) {
+    public void setIsCompete(Boolean bool) {
         isComplete = bool;
     }
 
