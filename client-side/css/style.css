@@ -26,7 +26,7 @@ body {
 .card__inner.is-flipped {
   transform: rotateY(180deg);
   width: 100%;
-  margin-bottom: 10em;
+  margin-bottom: 20em;
 }
 
 .card__face {
@@ -91,6 +91,10 @@ body {
   backface-visibility: hidden;
   margin-top: 1em;
   margin-bottom: 0em;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .card__content {
