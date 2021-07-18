@@ -1,10 +1,18 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+const card = document.querySelector(".card__inner");
+
+card.addEventListener("click", function (e) {
+  card.classList.toggle('is-flipped');
+});
+=======
 console.log('Client Side is wired up!');
 import Header from "./components/Header.js";
 // import Footer from "/components/Footer.js";
 import HomePage from "./pages/HomePage.js";
 
 const container = document.querySelector(".container");
+>>>>>>> dev
 =======
 import Header from './components/Header.js';
 import apiActions from './api-actions/api-actions.js';
