@@ -149,8 +149,11 @@ body {
   font-size: 18px;
   line-height: 1.4;
   padding-top: 1em;
+}
+
 /* Animated Background */
-@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+@import url("https://fonts.googleapis.com/css?family=Exo:400,700");
+
 
 *{
     margin: 0px;
