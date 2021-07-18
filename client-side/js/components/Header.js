@@ -1,5 +1,6 @@
 export default function Header() {
     return `
+<<<<<<< HEAD
 //     <nav role="navigation">
 //     <div class="menuToggle">
 //     <input type="checkbox" /> 
@@ -17,3 +18,11 @@ export default function Header() {
 // </nav>
     `;
 }
+=======
+      <ul class='nav__list'>
+          <li class='nav__list_cards'>Mars Cards List</li>
+          <li class='nav__list_card'>Mars Card</li>
+      </ul>
+      `;
+  }
+>>>>>>> dev
