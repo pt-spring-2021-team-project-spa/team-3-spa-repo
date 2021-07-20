@@ -56,6 +56,8 @@ function header() {
     headerElement.innerHTML = Header();
   }
 
+let nasaCardsJson;
+
 function renderNasaCardList() {
     const nasaCardsButton = document.querySelector('.nav__list_cards');
     nasaCardsButton.addEventListener('click', () => {
@@ -63,6 +65,7 @@ function renderNasaCardList() {
       apiActions.getRequest(
         'https://images-api.nasa.gov/search?keywords=mars',
         (cards) => {
+          nasaCardsJson = cards;
           app.innerHTML = CardsPage(cards);
         }
       );
@@ -74,10 +77,20 @@ function renderNasaCard() {
   const app = document.querySelector('#app');
   app.addEventListener('click', (event) => {
     if (event.target.classList.contains('card__title')) {
-      const cardUrl =
-        event.target.parentElement.querySelector('#cardId').value;
-      apiActions.getRequest(cardUrl, (person) => {
-        app.innerHTML = CardPage(card);
+      const nasaId =
+        event.target.parentElement.querySelector('input').value;
+      // const cardUrl =
+      //   'https://images-api.nasa.gov/search?nasa_id=' + nasaId;
+      // apiActions.getRequest(cardUrl, (card) => {
+      //   console.log(card);
+      //   app.innerHTML = CardPage(card);
+      // });
+      console.log(nasaCardsJson);
+      nasaCardsJson.collection.items.forEach((card) => {
+        if (nasaId === card.data[0].nasa_id) {
+          console.log(card);
+          app.innerHTML = CardPage(card);
+        }
       });
     }
   });
