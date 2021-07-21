@@ -1,32 +1,28 @@
-// <<<<<<< HEAD
-// <<<<<<< HEAD
-const card = document.querySelector(".card__inner");
-
-card.addEventListener("click", function (e) {
-  card.classList.toggle('is-flipped');
-});
-// =======
-console.log('Client Side is wired up!');
-// import Footer from "/components/Footer.js";
-import HomePage from "./pages/HomePage.js";
-
-const container = document.querySelector(".container");
-// >>>>>>> dev
-// =======
 import Header from './components/Header.js';
 import apiActions from './api-actions/api-actions.js';
 import CardsPage from './pages/CardsPage.js';
 import CardPage from './pages/CardPage.js';
-// >>>>>>> dev
+// import Footer from "/components/Footer.js";
+import HomePage from "./pages/HomePage.js";
+
+const card = document.querySelector(".card__inner");
+const container = document.querySelector(".container");
+let nasaCardsJson;
 
 buildPage();
 
 function buildPage() {
-// <<<<<<< HEAD
+
   header();
   footer();
   navigateToHomePage();
+  renderNasaCardList();
+  renderNasaCard();
 }
+
+card.addEventListener("click", function (e) {
+  card.classList.toggle('is-flipped');
+});
 
 function header() {
   const headerElement = document.querySelector(".header");
@@ -45,18 +41,11 @@ function navigateToHomePage() {
     app.innerHTML = HomePage();
   });
 }
-// =======
-    // header();
-    // renderNasaCardList();
-    // renderNasaCard();
-// }
 
 function header() {
     const headerElement = document.querySelector('.header');
     headerElement.innerHTML = Header();
   }
-
-let nasaCardsJson;
 
 function renderNasaCardList() {
     const nasaCardsButton = document.querySelector('.nav__list_cards');
