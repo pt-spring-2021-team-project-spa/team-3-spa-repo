@@ -4,25 +4,16 @@ import CardsPage from './pages/CardsPage.js';
 import CardPage from './pages/CardPage.js';
 // import Footer from "/components/Footer.js";
 import HomePage from "./pages/HomePage.js";
+import RandomCard from './components/RandomCard';
 
-const card = document.querySelector(".card__inner");
+const app = document.querySelector('#app');
 const container = document.querySelector(".container");
+
 let nasaCardsJson;
 
-buildPage();
-
-function buildPage() {
-
-  header();
-  footer();
-  navigateToHomePage();
-  renderNasaCardList();
-  renderNasaCard();
-}
-
-card.addEventListener("click", function (e) {
-  card.classList.toggle('is-flipped');
-});
+function randomCard() {
+  app.innerHTML = RandomCard(1)
+} 
 
 function header() {
   const headerElement = document.querySelector(".header");
@@ -42,11 +33,6 @@ function navigateToHomePage() {
   });
 }
 
-function header() {
-    const headerElement = document.querySelector('.header');
-    headerElement.innerHTML = Header();
-  }
-
 function renderNasaCardList() {
     const nasaCardsButton = document.querySelector('.nav__list_cards');
     nasaCardsButton.addEventListener('click', () => {
@@ -59,7 +45,6 @@ function renderNasaCardList() {
         }
       );
     });
-
   }
 
 function renderNasaCard() {
@@ -80,9 +65,28 @@ function renderNasaCard() {
           console.log(card);
           app.innerHTML = CardPage(card);
         }
-      });
+      })
     }
-  });
+  })
+}
+
+function buildPage() {
+  header();
+  // footer();
+  // navigateToHomePage();
+  renderNasaCardList();
+  renderNasaCard();
+  randomCard() // will be taken out of buildpage after homepage is built
+}
+
+buildPage()
+
+const card = document.querySelector(".card__inner");
+
+card.addEventListener("click", function (e) {
+  card.classList.toggle('is-flipped');
+});
+
     // const nasaCardButton = document.querySelector('.nav__list_card');
     // nasaCardButton.addEventListener('click', (event) => {
     //   const app = document.querySelector('#app');
@@ -93,4 +97,3 @@ function renderNasaCard() {
     //     }
     //   );
     // });
-}
