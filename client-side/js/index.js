@@ -1,32 +1,28 @@
-// <<<<<<< HEAD
-// <<<<<<< HEAD
-const card = document.querySelector(".card__inner");
-
-card.addEventListener("click", function (e) {
-  card.classList.toggle('is-flipped');
-});
-// =======
-console.log('Client Side is wired up!');
-// import Footer from "/components/Footer.js";
-import HomePage from "./pages/HomePage.js";
-
-const container = document.querySelector(".container");
-// >>>>>>> dev
-// =======
 import Header from './components/Header.js';
 import apiActions from './api-actions/api-actions.js';
 import CardsPage from './pages/CardsPage.js';
 import CardPage from './pages/CardPage.js';
-// >>>>>>> dev
+// import Footer from "/components/Footer.js";
+import HomePage from "./pages/HomePage.js";
+
+const card = document.querySelector(".card__inner");
+const container = document.querySelector(".container");
+let nasaCardsJson;
 
 buildPage();
 
 function buildPage() {
-// <<<<<<< HEAD
+
   header();
   footer();
   navigateToHomePage();
+  renderNasaCardList();
+  renderNasaCard();
 }
+
+card.addEventListener("click", function (e) {
+  card.classList.toggle('is-flipped');
+});
 
 function header() {
   const headerElement = document.querySelector(".header");
@@ -45,11 +41,6 @@ function navigateToHomePage() {
     app.innerHTML = HomePage();
   });
 }
-// =======
-    // header();
-    // renderNasaCardList();
-    // renderNasaCard();
-// }
 
 function header() {
     const headerElement = document.querySelector('.header');
@@ -63,6 +54,7 @@ function renderNasaCardList() {
       apiActions.getRequest(
         'https://images-api.nasa.gov/search?keywords=mars',
         (cards) => {
+          nasaCardsJson = cards;
           app.innerHTML = CardsPage(cards);
         }
       );
@@ -74,10 +66,20 @@ function renderNasaCard() {
   const app = document.querySelector('#app');
   app.addEventListener('click', (event) => {
     if (event.target.classList.contains('card__title')) {
-      const cardUrl =
-        event.target.parentElement.querySelector('#cardId').value;
-      apiActions.getRequest(cardUrl, (person) => {
-        app.innerHTML = CardPage(card);
+      const nasaId =
+        event.target.parentElement.querySelector('input').value;
+      // const cardUrl =
+      //   'https://images-api.nasa.gov/search?nasa_id=' + nasaId;
+      // apiActions.getRequest(cardUrl, (card) => {
+      //   console.log(card);
+      //   app.innerHTML = CardPage(card);
+      // });
+      console.log(nasaCardsJson);
+      nasaCardsJson.collection.items.forEach((card) => {
+        if (nasaId === card.data[0].nasa_id) {
+          console.log(card);
+          app.innerHTML = CardPage(card);
+        }
       });
     }
   });
