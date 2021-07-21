@@ -12,7 +12,7 @@
 
 export default function RandomCard(cardData) {
     console.log(cardData);
-    const html = `
+    return `
     <div class="card">
       <div class="card__inner">
         <div class="card__face card__face--front">

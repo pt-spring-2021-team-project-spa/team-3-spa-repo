@@ -1,40 +1,19 @@
-console.log('Client Side is wired up!');
+import Header from './components/Header.js';
+import apiActions from './api-actions/api-actions.js';
+import CardsPage from './pages/CardsPage.js';
+import CardPage from './pages/CardPage.js';
 // import Footer from "/components/Footer.js";
 import HomePage from "./pages/HomePage.js";
-
-const container = document.querySelector(".container");
-// import Header from './components/Header.js';
-// import apiActions from './api-actions/api-actions.js';
-// import CardsPage from './pages/CardsPage.js';
-// import CardPage from './pages/CardPage.js';
 import RandomCard from './components/RandomCard';
 
 const app = document.querySelector('#app');
+const container = document.querySelector(".container");
 
-buildPage();
+let nasaCardsJson;
 
-function buildPage() {
-  // header();
-  // footer();
-  // navigateToHomePage();
-
-  
-  // const data = fetch('http://localhost:8080/api/cards/random').
-  //   then(response => response.json()).
-  //   then(data => { app.innerHTML = RandomCard(data) });
-
-    // setTimeout(() => {  console.log("World!"); }, 2000);
-    
-// console.log(data);
-
-  // app.innerHTML = RandomCard();
-const card = document.querySelector(".card__inner");
-
-card.addEventListener("click", function (e) {
-  card.classList.toggle('is-flipped');
-});
-
-}
+function randomCard() {
+  app.innerHTML = RandomCard(1)
+} 
 
 function header() {
   const headerElement = document.querySelector(".header");
@@ -53,42 +32,61 @@ function navigateToHomePage() {
     app.innerHTML = HomePage();
   });
 }
-// =======
-    // header();
-    // renderNasaCardList();
-    // renderNasaCard();
-// }
 
-function header() {
-    const headerElement = document.querySelector('.header');
-    headerElement.innerHTML = Header();
+function renderNasaCardList() {
+    const nasaCardsButton = document.querySelector('.nav__list_cards');
+    nasaCardsButton.addEventListener('click', () => {
+      const app = document.querySelector('#app');
+      apiActions.getRequest(
+        'https://images-api.nasa.gov/search?keywords=mars',
+        (cards) => {
+          nasaCardsJson = cards;
+          app.innerHTML = CardsPage(cards);
+        }
+      );
+    });
   }
 
-// function renderNasaCardList() {
-//     const nasaCardsButton = document.querySelector('.nav__list_cards');
-//     nasaCardsButton.addEventListener('click', () => {
-//       const app = document.querySelector('#app');
-//       apiActions.getRequest(
-//         'https://images-api.nasa.gov/search?keywords=mars',
-//         (cards) => {
-//           app.innerHTML = CardsPage(cards);
-//         }
-//       );
-//     });
+function renderNasaCard() {
+  const app = document.querySelector('#app');
+  app.addEventListener('click', (event) => {
+    if (event.target.classList.contains('card__title')) {
+      const nasaId =
+        event.target.parentElement.querySelector('input').value;
+      // const cardUrl =
+      //   'https://images-api.nasa.gov/search?nasa_id=' + nasaId;
+      // apiActions.getRequest(cardUrl, (card) => {
+      //   console.log(card);
+      //   app.innerHTML = CardPage(card);
+      // });
+      console.log(nasaCardsJson);
+      nasaCardsJson.collection.items.forEach((card) => {
+        if (nasaId === card.data[0].nasa_id) {
+          console.log(card);
+          app.innerHTML = CardPage(card);
+        }
+      })
+    }
+  })
+}
 
-//   }
+function buildPage() {
+  header();
+  // footer();
+  // navigateToHomePage();
+  renderNasaCardList();
+  renderNasaCard();
+  randomCard() // will be taken out of buildpage after homepage is built
+}
 
-// function renderNasaCard() {
-//   const app = document.querySelector('#app');
-//   app.addEventListener('click', (event) => {
-//     if (event.target.classList.contains('card__title')) {
-//       const cardUrl =
-//         event.target.parentElement.querySelector('#cardId').value;
-//       apiActions.getRequest(cardUrl, (person) => {
-//         app.innerHTML = CardPage(card);
-//       });
-//     }
-//   });
+buildPage()
+
+const card = document.querySelector(".card__inner");
+
+card.addEventListener("click", function (e) {
+  card.classList.toggle('is-flipped');
+});
+
     // const nasaCardButton = document.querySelector('.nav__list_card');
     // nasaCardButton.addEventListener('click', (event) => {
     //   const app = document.querySelector('#app');
@@ -99,4 +97,3 @@ function header() {
     //     }
     //   );
     // });
-// }
