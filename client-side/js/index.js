@@ -1,24 +1,46 @@
 import Header from './components/Header.js';
-import apiActions from './api-actions/api-actions.js';
+import apiActions from './api-actions/api-actions.js'
 import NasaItemsPage from './pages/NasaItemsPage.js';
 import NasaItemPage from './pages/NasaItemPage.js';
+
+// import Footer from "/components/Footer.js";
+import HomePage from "./pages/HomePage.js";
+
+const card = document.querySelector(".card__inner");
+const container = document.querySelector(".container");
+let nasaItemsJson;
 
 buildPage();
 
 function buildPage() {
-    header();
-    renderNasaItemList();
-    renderNasaItem();
-    // renderMetItemList();
-    // renderMetItem();
+  header();
+  renderNasaItemList();
+  renderNasaItem();
+  // renderMetItemList();
+  // renderMetItem();
 }
+
+// card.addEventListener("click", function (e) {
+//   card.classList.toggle('is-flipped');
+// });
 
 function header() {
-    const headerElement = document.querySelector('.header');
-    headerElement.innerHTML = Header();
+  const headerElement = document.querySelector(".header");
+  headerElement.innerHTML = Header();
 }
 
-let nasaItemsJson;
+function footer() {
+  const footerElement = document.querySelector(".footer");
+  footerElement.innerHTML = Footer();
+}
+
+function navigateToHomePage() {
+  const homeButton = document.querySelector();
+  homeButton.addEventListener("click", () => {
+    const app = document.querySelector("#app");
+    app.innerHTML = HomePage();
+  });
+}
 
 function renderNasaItemList() {
   const nasaItemsButton = document.querySelector('.nav__list_nasa_cards');
@@ -54,16 +76,6 @@ function renderNasaItem() {
       // });
     }
   });
-    // const nasaCardButton = document.querySelector('.nav__list_card');
-    // nasaCardButton.addEventListener('click', (event) => {
-    //   const app = document.querySelector('#app');
-    //   apiActions.getRequest(
-    //     'https://images-api.nasa.gov/search?keywords=mars',
-    //     (cards) => {
-    //       app.innerHTML = CardPage(cards);
-    //     }
-    //   );
-    // });
 }
 
 // function renderMetCardList() {
