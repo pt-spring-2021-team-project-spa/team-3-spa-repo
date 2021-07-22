@@ -2,6 +2,9 @@ import Header from './components/Header.js';
 import apiActions from './api-actions/api-actions.js'
 import NasaItemsPage from './pages/NasaItemsPage.js';
 import NasaItemPage from './pages/NasaItemPage.js';
+import MetObjectsPage from './pages/MetObjectsPage.js';
+import MetObjectPage from './pages/MetObjectPage.js';
+import MetObject from './components/MetObject.js';
 // import Footer from "/components/Footer.js";
 import HomePage from "./pages/HomePage.js";
 import RandomCard from './components/RandomCard';
@@ -9,6 +12,7 @@ import RandomCard from './components/RandomCard';
 const app = document.querySelector('#app');
 const container = document.querySelector(".container");
 let nasaItemsJson;
+let metData = [];
 
 function randomCard() {
   app.innerHTML = RandomCard(1)
@@ -49,10 +53,10 @@ function renderNasaItemList() {
 function renderNasaItem() {
   const app = document.querySelector('#app');
   app.addEventListener('click', (event) => {
-    if (event.target.classList.contains('nasa_card__title')) {
+    if (event.target.classList.contains('card__title')) {
       // console.log("NASA ID: " + event.target.parentNode.querySelector('#cardId').value)
       const nasaId =
-        event.target.parentNode.querySelector('.nasaCardId').value;
+        event.target.parentNode.querySelector('.id').value;
         nasaItemsJson.collection.items.forEach((nasaItem, index) => {
           let itemIndex = index;
           if (nasaId === nasaItem.data[0].nasa_id) {
@@ -68,19 +72,28 @@ function renderNasaItem() {
   });
 }
 
-// function renderMetCardList() {
-//     const nasaCardsButton = document.querySelector('.nav__list_cards');
-//     nasaCardsButton.addEventListener('click', () => {
-//       const app = document.querySelector('#app');
-//       apiActions.getRequest(
-//         'https://collectionapi.metmuseum.org/public/collection/v1/objects',
-//         // 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true',
-//         (objectIDs) => {
-//           app.innerHTML = CardsPage(objectIDs);
-//         }
-//       );
-//     });
-//   }
+function renderMetObjectList() {
+    const metObjectsButton = document.querySelector('.nav__list_met_cards');
+    metObjectsButton.addEventListener('click', () => {
+      metData = [];
+      const app = document.querySelector('#app');
+      app.innerHTML = MetObjectsPage();
+      const metObjectsDiv = document.querySelector('.cards__container');
+      apiActions.getRequest(
+        'https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&q=french',
+        (metObjectIds) => {
+          console.log(metObjectIds);
+          for (let i=0; i<10; i++) {
+            apiActions.getRequest(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${metObjectIds.objectIDs[Math.floor(Math.random() * metObjectIds.objectIDs.length)]}`, (metObject) => {
+              console.log(MetObject);
+              metData.push(metObject);
+              metObjectsDiv.innerHTML += MetObject(metObject);
+            });
+          }
+        }
+      );
+    });
+  }
 
 // function renderMetCard() {
 //   console.log("getting to renderMetCard function");
@@ -116,7 +129,9 @@ function buildPage() {
   // navigateToHomePage();
   renderNasaItemList();
   renderNasaItem();
-  randomCard() // will be taken out of buildpage after homepage is built
+  renderMetObjectList();
+  // renderMetObject();
+  randomCard(); // will be taken out of buildpage after homepage is built
 }
 
 buildPage()
