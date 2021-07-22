@@ -2,27 +2,18 @@ import Header from './components/Header.js';
 import apiActions from './api-actions/api-actions.js'
 import NasaItemsPage from './pages/NasaItemsPage.js';
 import NasaItemPage from './pages/NasaItemPage.js';
-
 // import Footer from "/components/Footer.js";
 import HomePage from "./pages/HomePage.js";
+import RandomCard from './components/RandomCard';
 
-const card = document.querySelector(".card__inner");
+const app = document.querySelector('#app');
 const container = document.querySelector(".container");
+const card = document.querySelector(".card__inner");
 let nasaItemsJson;
 
-buildPage();
-
-function buildPage() {
-  header();
-  renderNasaItemList();
-  renderNasaItem();
-  // renderMetItemList();
-  // renderMetItem();
-}
-
-// card.addEventListener("click", function (e) {
-//   card.classList.toggle('is-flipped');
-// });
+function randomCard() {
+  app.innerHTML = RandomCard(1)
+} 
 
 function header() {
   const headerElement = document.querySelector(".header");
@@ -119,3 +110,18 @@ function renderNasaItem() {
 //     //   );
 //     // });
 // }
+
+function buildPage() {
+  header();
+  // footer();
+  // navigateToHomePage();
+  renderNasaItemList();
+  renderNasaItem();
+  randomCard() // will be taken out of buildpage after homepage is built
+}
+
+buildPage()
+
+card.addEventListener("click", function (e) {
+  card.classList.toggle('is-flipped');
+});
