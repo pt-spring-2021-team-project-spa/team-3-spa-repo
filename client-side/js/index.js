@@ -8,7 +8,6 @@ import RandomCard from './components/RandomCard';
 
 const app = document.querySelector('#app');
 const container = document.querySelector(".container");
-const card = document.querySelector(".card__inner");
 let nasaItemsJson;
 
 function randomCard() {
@@ -122,6 +121,7 @@ function buildPage() {
 
 buildPage()
 
+const card = document.querySelector(".card__inner");
 card.addEventListener("click", function (e) {
   card.classList.toggle('is-flipped');
 });
