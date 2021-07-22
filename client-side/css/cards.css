@@ -1,5 +1,368 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans");
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  width: 100%;
+  min-height: 150vh;
+}
+
+.card {
+  margin: 100px auto 0;
+  width: 800px;
+  height: 600px;
+  perspective: 1000px;
+}
+
+.card__inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.75s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.card__inner.is-flipped {
+  transform: rotateY(180deg);
+  width: 100%;
+  margin-bottom: 20em;
+}
+
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: 50px;
+  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card__face--front {
+  background-color: rgba(5, 192, 161, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid;
+  border-width: 0.25em;
+}
+
+.card__face--front h2 {
+  color: rgb(2, 7, 19);
+  font-size: 62px;
+  margin-bottom: 8em;
+  margin-left: 2em;
+  margin-right: 2em;
+  padding-top: 1em;
+  border-bottom: 3.5px solid black;
+  padding-bottom: 5px;
+  max-height: 33%;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.card-img {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 13em;
+  padding-bottom: 0.5em;
+  display: flex;
+  justify-content: center;
+  width: 33vw;
+  height: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card__face--back {
+  background-color: rgba(5, 192, 161, 0.65);
+  transform: rotateY(180deg);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  backface-visibility: hidden;
+  margin-top: 1em;
+  margin-bottom: 0em;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: solid;
+  border-width: 0.25em;
+}
+
+.card__content {
+  width: 100%;
+  height: 100%;
+}
+
+.card__header {
+  position: relative;
+  padding: 30px 30px 40px;
+}
+
+.card__header:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(2, 0, 36);
+  background: radial-gradient(
+    circle,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(115, 191, 140, 1) 37%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  z-index: -1;
+  height: 11em;
+  border-bottom: solid;
+}
+
+.card__header h2 {
+  color: rgb(255, 255, 255);
+  font-size: 64px;
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+.card__body {
+  padding: 30px;
+}
+
+.card__body h3 {
+  color: black;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 0em;
+  padding-top: 0em;
+}
+
+.card__body p {
+  color: var(--dark);
+  font-size: 18px;
+  line-height: 1.4;
+  padding-top: 1em;
+}
+
+/* Animated Background */
+@import url("https://fonts.googleapis.com/css?family=Exo:400,700");
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* .context {
+    width: 100%;
+    position: absolute;
+    top:50vh;
+    
+} */
+
+/* .context h1{
+    text-align: center;
+    color: #fff;
+    font-size: 50px;
+} */
+
+/* .area{
+    background: #4e54c8;  
+    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+    width: 100%;
+    height:100vh;
+    
+   
+} */
+
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(9, 44, 197, 0.151);
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+}
+
+.circles li:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(2) {
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3) {
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5) {
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7) {
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8) {
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9) {
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10) {
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+}
+
+body {
+  font-family: "Exo", sans-serif;
+  width: 95%;
+  margin: 0 auto;
+  background-color: rgba(5, 192, 161, 0.651);
+}
+#wrapper {
+  background-color: rgba(5, 192, 161, 0);
+}
+h1 {
+  margin: 1% 0%;
+  padding: 0.25em;
+  background-color: #ergba(5, 192, 161, 0.651) fefef;
+}
+ul {
+  text-align: center;
+}
+h1,
+p {
+  text-align: center;
+}
+#content {
+  overflow: auto;
+}
+#nav,
+#feature,
+#footer {
+  margin: 1% 0%;
+}
+/*
+.column1, .column2, .column3 {
+  width: 31.3%;
+  float: left;
+  margin: 1%;
+}
+.column3 {
+  margin-right: 0%;
+} */
+.column1,
+.column2,
+.column3 {
+  width: 31.3%;
+  float: left;
+}
+
+.column1 {
+  float: left;
+}
+.column2 {
+  margin: 0% 3%;
+}
+.column3 {
+  float: right;
+  margin: 0%;
+}
+
+li {
+  display: inline;
+  padding: 0.5em;
+}
+#nav,
+#footer {
+  background-color: transparent;
+  padding: 0.5em 0;
+}
+#feature,
+.article {
+  background-color: #efefef;
+  height: 10em;
+  margin-bottom: 10em;
+}
+
 .actionButton {
-  /* background-color: #34cceb; */
   border-radius: 6px;
   margin: 5px;
   padding: 5px;
@@ -18,19 +381,19 @@
   list-style-type: none;
 }
 
-.nasa_cards__container {
+.cards__container {
   background-color: black;
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(3, 1fr);
 }
 
-.nasa_card__title {
+.card__title {
   cursor: pointer;
   background-color: yellow;
 }
 
-.nasa_card__container {
+.card__container {
   background-color: #8334eb;
   border-radius: 8px;
   height: 420px;
@@ -38,7 +401,7 @@
   text-align: center;
 }
 
-.nasa_card__img {
+.card__img {
   background-color: #34ebab;
 }
 
@@ -47,6 +410,6 @@ img {
   max-height: 40%;
 }
 
-.nasa_card__desc {
+.card__desc {
   background-color: aqua;
 }
