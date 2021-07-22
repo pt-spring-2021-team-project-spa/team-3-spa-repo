@@ -1,5 +1,8 @@
 export default function MetObject(metObject) {
     console.log(metObject);
+    if (metObject.artistDisplayName === '') {
+        metObject.artistDisplayName = '~ unknown ~';
+    }
     return `
     <div class='nasa_card__container'>
         <input type='hidden' class='id' id='metObjectId${metObject.objectID}' value=${metObject.objectID} />
