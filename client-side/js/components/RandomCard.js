@@ -11,8 +11,8 @@
 // }
 
 export default function RandomCard(cardData) {
-    console.log(cardData);
-    return `
+  console.log(cardData);
+  return `
     <div class="card">
       <div class="card__inner">
         <div class="card__face card__face--front">
@@ -49,5 +49,5 @@ export default function RandomCard(cardData) {
       </div>
     </div>
 
-    `
+    `;
 }
