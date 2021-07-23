@@ -6,8 +6,10 @@ import MetObjectsPage from './pages/MetObjectsPage.js';
 import MetObjectPage from './pages/MetObjectPage.js';
 import MetObject from './components/MetObject.js';
 // import Footer from "/components/Footer.js";
-import HomePage from "./pages/HomePage.js";
+// import HomePage from "./pages/HomePage.js";
 import RandomCard from './components/RandomCard';
+import ArtCard from './components/ArtCard.js';
+import PlanetCard from './components/PlanetCard.js';
 
 const app = document.querySelector('#app');
 const container = document.querySelector(".container");
@@ -75,6 +77,76 @@ function renderNasaItem() {
   });
 }
 
+// function getRandomCard() {
+//   const planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+//   apiActions.getRequest('http://localhost:8080/api/cards/random',
+//     card => {
+//       console.log(card.facts)
+//       if (planets.includes(card.name)) {
+//         // app.innerHTML = RandomCard(1);
+//         console.log('planet card')
+//       } else {
+//         apiActions.getRequest(card.facts,
+//         cardData => {
+//           console.log(cardData)
+//           app.innerHTML = ArtCard(card.name, card.image, cardData)
+//           // const card = document.querySelector(".card__inner");
+//           // card.addEventListener("click", function (e) {
+//           // card.classList.toggle('is-flipped');
+//           // });      
+//         }  
+//         )
+//       }
+//     }  
+//   ) 
+// }
+
+function getRandomCard() {
+  const planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+  // fetch(location)
+  //       .then((response) => response.json())
+  //       .then((data) => callback(data))
+  //       .then((err) => console.log(err));
+  fetch('http://localhost:8080/api/cards/random')
+    .then((response) => response.json())
+    .then(card => {
+      console.log(card.facts)
+      if (planets.includes(card.name)) {
+        // app.innerHTML = RandomCard(1);
+        console.log('planet card')
+        fetch(card.facts)
+        .then((response) => response.json())
+        .then(cardData => {
+          console.log(cardData)
+          app.innerHTML = PlanetCard(card.name, card.image, cardData)
+          setTimeout(function(){
+          const card = document.querySelector(".card__inner");
+          card.addEventListener("click", function (e) {
+          card.classList.toggle('is-flipped');
+          });
+        }, 0)
+
+        })  
+      } else {
+        fetch(card.facts)
+        .then((response) => response.json())
+        .then(cardData => {
+          console.log(cardData)
+          let x = app.innerHTML = ArtCard(card.name, card.image, cardData)
+          console.log("innerhtml done")
+
+          setTimeout(function(){
+          const card = document.querySelector(".card__inner");
+          card.addEventListener("click", function (e) {
+          card.classList.toggle('is-flipped');
+          });
+        }, 0)
+
+        })  
+      }
+    })
+}
+
 function renderMetObjectList() {
     const metObjectsButton = document.querySelector('.nav__list_met_cards');
     metObjectsButton.addEventListener('click', () => {
@@ -134,12 +206,8 @@ function buildPage() {
   renderNasaItem();
   renderMetObjectList();
   // renderMetObject();
-  randomCard(); // will be taken out of buildpage after homepage is built
+  // randomCard(); // will be taken out of buildpage after homepage is built
+  getRandomCard();
 }
 
 buildPage()
-
-const card = document.querySelector(".card__inner");
-card.addEventListener("click", function (e) {
-  card.classList.toggle('is-flipped');
-});
