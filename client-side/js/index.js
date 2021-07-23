@@ -1,15 +1,14 @@
 import Header from './components/Header.js';
-import apiActions from './api-actions/api-actions.js';
-import CardsPage from './pages/CardsPage.js';
-import CardPage from './pages/CardPage.js';
+import apiActions from './api-actions/api-actions.js'
+import NasaItemsPage from './pages/NasaItemsPage.js';
+import NasaItemPage from './pages/NasaItemPage.js';
 // import Footer from "/components/Footer.js";
 import HomePage from "./pages/HomePage.js";
 import RandomCard from './components/RandomCard';
 
 const app = document.querySelector('#app');
 const container = document.querySelector(".container");
-
-let nasaCardsJson;
+let nasaItemsJson;
 
 function randomCard() {
   app.innerHTML = RandomCard(1)
@@ -33,67 +32,96 @@ function navigateToHomePage() {
   });
 }
 
-function renderNasaCardList() {
-    const nasaCardsButton = document.querySelector('.nav__list_cards');
-    nasaCardsButton.addEventListener('click', () => {
-      const app = document.querySelector('#app');
-      apiActions.getRequest(
-        'https://images-api.nasa.gov/search?keywords=mars',
-        (cards) => {
-          nasaCardsJson = cards;
-          app.innerHTML = CardsPage(cards);
-        }
-      );
-    });
-  }
+function renderNasaItemList() {
+  const nasaItemsButton = document.querySelector('.nav__list_nasa_cards');
+  nasaItemsButton.addEventListener('click', () => {
+    const app = document.querySelector('#app');
+    apiActions.getRequest(
+      'https://images-api.nasa.gov/search?keywords=mars',
+      (nasaItems) => {
+        nasaItemsJson = nasaItems;
+        app.innerHTML = NasaItemsPage(nasaItems);
+      }
+    );
+  });
+}
 
-function renderNasaCard() {
+function renderNasaItem() {
   const app = document.querySelector('#app');
   app.addEventListener('click', (event) => {
-    if (event.target.classList.contains('card__title')) {
+    if (event.target.classList.contains('nasa_card__title')) {
+      // console.log("NASA ID: " + event.target.parentNode.querySelector('#cardId').value)
       const nasaId =
-        event.target.parentElement.querySelector('input').value;
-      // const cardUrl =
-      //   'https://images-api.nasa.gov/search?nasa_id=' + nasaId;
-      // apiActions.getRequest(cardUrl, (card) => {
-      //   console.log(card);
-      //   app.innerHTML = CardPage(card);
+        event.target.parentNode.querySelector('.nasaCardId').value;
+        nasaItemsJson.collection.items.forEach((nasaItem, index) => {
+          let itemIndex = index;
+          if (nasaId === nasaItem.data[0].nasa_id) {
+            app.innerHTML = NasaItemPage(nasaItem, itemIndex);
+          }
+        })
+      //   const Url =
+
+      // apiActions.getRequest(nasaItemUrl, (nasaItem) => {
+      //   app.innerHTML = NasaItemPage(nasaItem);
       // });
-      console.log(nasaCardsJson);
-      nasaCardsJson.collection.items.forEach((card) => {
-        if (nasaId === card.data[0].nasa_id) {
-          console.log(card);
-          app.innerHTML = CardPage(card);
-        }
-      })
     }
-  })
+  });
 }
+
+// function renderMetCardList() {
+//     const nasaCardsButton = document.querySelector('.nav__list_cards');
+//     nasaCardsButton.addEventListener('click', () => {
+//       const app = document.querySelector('#app');
+//       apiActions.getRequest(
+//         'https://collectionapi.metmuseum.org/public/collection/v1/objects',
+//         // 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true',
+//         (objectIDs) => {
+//           app.innerHTML = CardsPage(objectIDs);
+//         }
+//       );
+//     });
+//   }
+
+// function renderMetCard() {
+//   console.log("getting to renderMetCard function");
+//   const app = document.querySelector('#app');
+//   app.addEventListener('click', (event) => {
+//     if (event.target.classList.contains('card__title')) {
+//       console.log("NASA ID: " + event.target.parentNode.querySelector('#cardId').value)
+//       const cardUrl =
+//         event.target.parentNode.querySelector('#cardId').value;
+//         console.log("Card url = " + cardUrl);
+//       //   const cardUrl =
+
+//       // apiActions.getRequest(cardUrl, (person) => {
+//       //   app.innerHTML = CardPage(card);
+//       // });
+//     }
+//   });
+//     // const nasaCardButton = document.querySelector('.nav__list_card');
+//     // nasaCardButton.addEventListener('click', (event) => {
+//     //   const app = document.querySelector('#app');
+//     //   apiActions.getRequest(
+//     //     'https://images-api.nasa.gov/search?keywords=mars',
+//     //     (cards) => {
+//     //       app.innerHTML = CardPage(cards);
+//     //     }
+//     //   );
+//     // });
+// }
 
 function buildPage() {
   header();
   // footer();
   // navigateToHomePage();
-  renderNasaCardList();
-  renderNasaCard();
+  renderNasaItemList();
+  renderNasaItem();
   randomCard() // will be taken out of buildpage after homepage is built
 }
 
 buildPage()
 
 const card = document.querySelector(".card__inner");
-
 card.addEventListener("click", function (e) {
   card.classList.toggle('is-flipped');
 });
-
-    // const nasaCardButton = document.querySelector('.nav__list_card');
-    // nasaCardButton.addEventListener('click', (event) => {
-    //   const app = document.querySelector('#app');
-    //   apiActions.getRequest(
-    //     'https://images-api.nasa.gov/search?keywords=mars',
-    //     (cards) => {
-    //       app.innerHTML = CardPage(cards);
-    //     }
-    //   );
-    // });
