@@ -13,6 +13,7 @@ const app = document.querySelector('#app');
 const container = document.querySelector(".container");
 let nasaItemsJson;
 let metData = [];
+let nasaKeywords = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto'];
 
 function randomCard() {
   app.innerHTML = RandomCard(1)
@@ -40,8 +41,10 @@ function renderNasaItemList() {
   const nasaItemsButton = document.querySelector('.nav__list_nasa_cards');
   nasaItemsButton.addEventListener('click', () => {
     const app = document.querySelector('#app');
+    let randIdx = Math.floor(Math.random() * nasaKeywords.length);
     apiActions.getRequest(
-      'https://images-api.nasa.gov/search?keywords=mars',
+      // 'https://images-api.nasa.gov/search?keywords=mars',
+      'https://images-api.nasa.gov/search?keywords=' + nasaKeywords[randIdx],
       (nasaItems) => {
         nasaItemsJson = nasaItems;
         app.innerHTML = NasaItemsPage(nasaItems);
@@ -83,7 +86,7 @@ function renderMetObjectList() {
         'https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&q=french',
         (metObjectIds) => {
           console.log(metObjectIds);
-          for (let i=0; i<10; i++) {
+          for (let i=0; i<40; i++) {
             apiActions.getRequest(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${metObjectIds.objectIDs[Math.floor(Math.random() * metObjectIds.objectIDs.length)]}`, (metObject) => {
               console.log(MetObject);
               metData.push(metObject);
