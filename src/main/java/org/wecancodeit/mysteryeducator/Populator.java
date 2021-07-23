@@ -25,20 +25,59 @@ public class Populator implements CommandLineRunner {
         badgeRepository.save(astronaut);
         badgeRepository.save(renoir);
 
-        cardRepository.save(new Card("Mars", astronaut, "http://localhost:8080/images/mars.jpg", "https://api.le-systeme-solaire.net/rest/bodies/mars"));
-        cardRepository.save(new Card("Earth", astronaut, "http://localhost:8080/images/earth.jpg", "https://api.le-systeme-solaire.net/rest/bodies/earth"));
-        cardRepository.save(new Card("Saturn", astronaut, "http://localhost:8080/images/saturn.jpg", "https://api.le-systeme-solaire.net/rest/bodies/saturn"));
-        cardRepository.save(new Card("Venus", astronaut, "http://localhost:8080/images/venus.jpg", "https://api.le-systeme-solaire.net/rest/bodies/venus"));
-        cardRepository.save(new Card("Jupiter", astronaut, "http://localhost:8080/images/jupiter.jpg", "https://api.le-systeme-solaire.net/rest/bodies/jupiter"));
-        cardRepository.save(new Card("Uranus", astronaut, "http://localhost:8080/images/uranus.jpg", "https://api.le-systeme-solaire.net/rest/bodies/uranus"));
-        cardRepository.save(new Card("Mercury", astronaut, "http://localhost:8080/images/mercury.jpg", "https://api.le-systeme-solaire.net/rest/bodies/mercury"));
-        cardRepository.save(new Card("Neptune", astronaut, "http://localhost:8080/images/neptune.jpg", "https://api.le-systeme-solaire.net/rest/bodies/neptune"));
-//        cardRepository.save(new Card("Mona Lisa", curator, "monalisa.jpg", "api info to fetch"));
         cardRepository.save(new Card(
-                "Reclining Nude",
-                renoir,
-                "https://images.metmuseum.org/CRDImages/ep/original/DP-14976-001.jpg",
-                "https://collectionapi.metmuseum.org/public/collection/v1/objects/438013"));
+                "Mars",
+                astronaut,
+                "http://localhost:8080/images/mars.jpg",
+                "https://api.le-systeme-solaire.net/rest/bodies/mars"));
+
+        cardRepository.save(new Card(
+                "Earth",
+                astronaut,
+                "http://localhost:8080/images/earth.jpg",
+                "https://api.le-systeme-solaire.net/rest/bodies/earth"));
+
+        cardRepository.save(new Card(
+                "Saturn",
+                astronaut,
+                "http://localhost:8080/images/saturn.jpg",
+                "https://api.le-systeme-solaire.net/rest/bodies/saturn"));
+
+        cardRepository.save(new Card(
+                "Venus",
+                astronaut,
+                "http://localhost:8080/images/venus.jpg",
+                "https://api.le-systeme-solaire.net/rest/bodies/venus"));
+
+        cardRepository.save(new Card(
+                "Jupiter",
+                astronaut,
+                "http://localhost:8080/images/jupiter.jpg",
+                "https://api.le-systeme-solaire.net/rest/bodies/jupiter"));
+
+        cardRepository.save(new Card(
+                "Uranus",
+                astronaut,
+                "http://localhost:8080/images/uranus.jpg",
+                "https://api.le-systeme-solaire.net/rest/bodies/uranus"));
+
+        cardRepository.save(new Card(
+                "Mercury",
+                astronaut,
+                "http://localhost:8080/images/mercury.jpg",
+                "https://api.le-systeme-solaire.net/rest/bodies/mercury"));
+
+        cardRepository.save(new Card(
+                "Neptune",
+                astronaut,
+                "http://localhost:8080/images/neptune.jpg",
+                "https://api.le-systeme-solaire.net/rest/bodies/neptune"));
+
+//        cardRepository.save(new Card(
+//                "Reclining Nude",
+//                renoir,
+//                "https://images.metmuseum.org/CRDImages/ep/original/DP-14976-001.jpg",
+//                "https://collectionapi.metmuseum.org/public/collection/v1/objects/438013"));
 
         cardRepository.save(new Card(
                 "Still Life with Peaches",
