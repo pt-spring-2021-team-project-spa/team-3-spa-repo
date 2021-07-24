@@ -1,0 +1,18 @@
+.button {
+  color: whitesmoke;
+  background-color: teal;
+  border: none;
+  padding: 5px 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+}
