@@ -3,6 +3,7 @@ export default function Header() {
       <ul class='nav__list'>
           <li class='nav__list_nasa_cards'>Nasa Items</li>
           <li class='nav__list_met_cards'>Met Objects</li>
+          <li class='next'>Next</li>
       </ul>
       `;
   }
