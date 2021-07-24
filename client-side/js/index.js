@@ -31,13 +31,13 @@ function footer() {
   footerElement.innerHTML = Footer();
 }
 
-function navigateToHomePage() {
-  const homeButton = document.querySelector();
-  homeButton.addEventListener("click", () => {
-    const app = document.querySelector("#app");
-    app.innerHTML = HomePage();
-  });
-}
+// function navigateToHomePage() {
+//   const homeButton = document.querySelector();
+//   homeButton.addEventListener("click", () => {
+//     const app = document.querySelector("#app");
+//     app.innerHTML = HomePage();
+//   });
+// }
 
 function renderNasaItemList() {
   const nasaItemsButton = document.querySelector('.nav__list_nasa_cards');

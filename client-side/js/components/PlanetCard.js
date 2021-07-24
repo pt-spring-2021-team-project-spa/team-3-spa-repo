@@ -16,7 +16,6 @@ export default function PlanetCard(name, image, cardData) {
     <div class="card">
       <div class="card__inner">
         <div class="card__face card__face--front">
-          <h3>${name}/h2>
         </div>
 
         <div class="card__photo">
@@ -30,15 +29,19 @@ export default function PlanetCard(name, image, cardData) {
             </div>
             <div class="card__body">
               <h4>Planet:</h3>
-              <p>${cardData.planetName}</p>
+              <p>${cardData.name}</p>
               </p>
               <h4>Moons:</h3>
               <p>${cardData.moons.length || 0}</p>
               </p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in
-                dapibus enim. Nulla.
+              <h4>Gravity (m/s²):</h3>
+              <p>${cardData.gravity}</p>
               </p>
+              <h4>Average Temperature:</h3>
+              <p>${cardData.avgTemp}</p>
+              <h4>Discovered By:</h3>
+              <p>${cardData.discoveredBy}</p>
             </div>
           </div>
         </div>

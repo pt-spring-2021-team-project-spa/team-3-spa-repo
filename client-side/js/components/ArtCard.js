@@ -16,7 +16,7 @@ export default function ArtCard(name, image, cardData) {
     <div class="card">
       <div class="card__inner">
         <div class="card__face card__face--front">
-          <h3>${name}/h2>
+  
         </div>
 
         <div class="card__photo">
@@ -32,14 +32,14 @@ export default function ArtCard(name, image, cardData) {
               <h4>Artist:</h3>
               <p>${cardData.artistDisplayName}</p>
               </p>
-              <h4>The Planet:</h3>
+              <h4>Artist Nationality:</h3>
+              <p>${cardData.artistNationality}</p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in
-                dapibus enim. Nulla.
-              </p>
+              <h4>Title of Artwork:</h3>
+               <p>${cardData.title}</p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in
-                dapibus enim. Nulla.
+              <h4>Date of Production:</h3>
+              <p>${cardData.objectDate}</p>
               </p>
             </div>
           </div>

@@ -66,11 +66,11 @@ body {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 13em;
+  padding-top: 9em;
   padding-bottom: 0.5em;
   display: flex;
   justify-content: center;
-  width: 33vw;
+  width: 50vw;
   height: auto;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -302,7 +302,7 @@ body {
 h1 {
   margin: 1% 0%;
   padding: 0.25em;
-  background-color: #ergba(5, 192, 161, 0.651) fefef;
+  background-color: rgba(5, 192, 161, 0.651) fefef;
 }
 ul {
   text-align: center;
@@ -317,7 +317,7 @@ p {
 #nav,
 #feature,
 #footer {
-  margin: 1% 0%;
+  margin: 4% 0%;
 }
 /*
 .column1, .column2, .column3 {
@@ -403,6 +403,7 @@ li {
 
 .card__img {
   background-color: #34ebab;
+  
 }
 
 img {
@@ -413,3 +414,17 @@ img {
 .card__desc {
   background-color: aqua;
 }
+
+.card__body p {
+  padding-top: 12px;
+}
+
+.card__photo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-bottom: 0em;
+  padding-top: 0em;
+}
+
